@@ -1,0 +1,61 @@
+package hello;
+
+//i
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class SimpleCalculator extends JFrame implements ActionListener{
+	//ii
+	private JButton addButton= new JButton("Add");
+	private JButton subButton= new JButton("Subtract");
+	private JButton mulButton= new JButton("Multiply");
+	private JButton divButton= new JButton("Divide");
+	private JLabel label =new JLabel("0.0");
+	private JTextField textFiled=new  JTextField(10);
+	private double result=0;
+
+	//iii
+	public SimpleCalculator(){
+	setLayout(new FlowLayout());
+	add(label);
+	add(textFiled);
+	add(addButton);
+	add(subButton);
+	add(mulButton);
+	add(divButton);
+	addButton.addActionListener(this);
+	subButton.addActionListener(this);
+	mulButton.addActionListener(this);
+	divButton.addActionListener(this);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	pack();
+}
+//iv
+	public void actionPerformed(ActionEvent event){
+		String buttonText = textFiled.getText();//frame
+		
+
+		if(event.getSource()==addButton){
+			 result=result+Double.parseDouble(buttonText);
+			 
+      
+  }
+  		if(event.getSource()==subButton){
+			  result=result-Double.parseDouble(buttonText);
+	
+  }
+  			if(event.getSource()==mulButton){
+			 result=result*Double.parseDouble(buttonText);
+		
+  }
+  			if(event.getSource()==divButton){
+			 result=result/Double.parseDouble(buttonText);
+}
+  	 label.setText(Double.toString(result));
+      pack();
+}
+	public static void main(String[] args){
+	 SimpleCalculator newFrame = new SimpleCalculator();
+      newFrame.setVisible(true);
+	}
+}
